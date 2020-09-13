@@ -11,6 +11,7 @@ import androidx.fragment.app.FragmentPagerAdapter;
 
 import id.sam.submission2bfaa.R;
 import id.sam.submission2bfaa.fragment.FollowersFragment;
+import id.sam.submission2bfaa.fragment.FollowingFragment;
 
 public class PageAdapter extends FragmentPagerAdapter {
 
@@ -23,7 +24,8 @@ public class PageAdapter extends FragmentPagerAdapter {
 
     @StringRes
     private final int[] TAB_TITLES = new int[]{
-            R.string.tab_followers
+            R.string.tab_followers,
+            R.string.tab_following
     };
 
     @NonNull
@@ -34,9 +36,9 @@ public class PageAdapter extends FragmentPagerAdapter {
             case 0:
                 fragment = new FollowersFragment();
                 break;
-//            case 1:
-//                fragment = new FollowersFragment();
-//                break;
+            case 1:
+                fragment = new FollowingFragment();
+                break;
         }
         return fragment;
     }
@@ -49,6 +51,6 @@ public class PageAdapter extends FragmentPagerAdapter {
 
     @Override
     public int getCount() {
-        return 1;
+        return 2;
     }
 }
