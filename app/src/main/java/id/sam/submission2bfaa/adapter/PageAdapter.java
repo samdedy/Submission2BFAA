@@ -24,8 +24,8 @@ public class PageAdapter extends FragmentPagerAdapter {
 
     @StringRes
     private final int[] TAB_TITLES = new int[]{
-            R.string.tab_followers,
-            R.string.tab_following
+            R.string.followers,
+            R.string.following
     };
 
     @NonNull

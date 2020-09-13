@@ -40,7 +40,7 @@ public class DetailActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_detail);
 
-        getSupportActionBar().setTitle("Detail User");
+        getSupportActionBar().setTitle(R.string.detail_user);
         txtName = findViewById(R.id.txtName);
         txtUsername = findViewById(R.id.txtUsername);
         txtBio = findViewById(R.id.txtBio);

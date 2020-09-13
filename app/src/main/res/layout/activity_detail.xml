@@ -134,7 +134,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
-                android:text="Repository" />
+                android:text="@string/repository" />
         </LinearLayout>
 
         <LinearLayout
@@ -155,7 +155,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
-                android:text="Gist" />
+                android:text="@string/gist" />
         </LinearLayout>
 
         <LinearLayout
@@ -176,7 +176,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
-                android:text="Following" />
+                android:text="@string/following" />
         </LinearLayout>
 
         <LinearLayout
@@ -198,7 +198,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
-                android:text="Follower" />
+                android:text="@string/followers" />
         </LinearLayout>
 
     </LinearLayout>
