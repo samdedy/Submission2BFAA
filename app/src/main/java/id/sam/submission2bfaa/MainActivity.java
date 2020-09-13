@@ -17,7 +17,7 @@ import java.util.List;
 
 import id.sam.submission2bfaa.adapter.UserAdapter;
 import id.sam.submission2bfaa.model.search.Item;
-import id.sam.submission2bfaa.model.search.UserSearch;
+import id.sam.submission2bfaa.model.search.SearchModel;
 import id.sam.submission2bfaa.service.ApiClient;
 import retrofit2.Call;
 import retrofit2.Callback;
@@ -35,9 +35,7 @@ public class MainActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
-        if (getSupportActionBar() != null) {
-            getSupportActionBar().setTitle("Search User");
-        }
+        getSupportActionBar().setTitle("Search User");
         rvSearchUser = findViewById(R.id.rvSearchUser);
         rvSearchUser.setLayoutManager(new LinearLayoutManager(this));
         progressBar = findViewById(R.id.progressBar);
@@ -62,10 +60,10 @@ public class MainActivity extends AppCompatActivity {
     }
 
     private void getSearchUser(final String usernames) {
-        Call<UserSearch> request = ApiClient.getApiService().getSearchUser(usernames);
-        request.enqueue(new Callback<UserSearch>() {
+        Call<SearchModel> request = ApiClient.getApiService().getSearchUser(usernames);
+        request.enqueue(new Callback<SearchModel>() {
             @Override
-            public void onResponse(Call<UserSearch> call, Response<UserSearch> response) {
+            public void onResponse(Call<SearchModel> call, Response<SearchModel> response) {
                 if (response.isSuccessful()) {
                     data = response.body().getItems();
                     rvSearchUser.setAdapter(new UserAdapter(MainActivity.this, data));
@@ -76,7 +74,7 @@ public class MainActivity extends AppCompatActivity {
             }
 
             @Override
-            public void onFailure(Call<UserSearch> call, Throwable t) {
+            public void onFailure(Call<SearchModel> call, Throwable t) {
                 Toast.makeText(MainActivity.this, "Request Failure" + t.getMessage(), Toast.LENGTH_SHORT).show();
             }
         });

@@ -8,7 +8,7 @@ import android.os.Parcelable;
 import com.google.gson.annotations.Expose;
 import com.google.gson.annotations.SerializedName;
 
-public class UserSearch implements Serializable, Parcelable
+public class SearchModel implements Serializable, Parcelable
 {
 
     @SerializedName("total_count")
@@ -20,25 +20,25 @@ public class UserSearch implements Serializable, Parcelable
     @SerializedName("items")
     @Expose
     private List<Item> items = null;
-    public final static Creator<UserSearch> CREATOR = new Creator<UserSearch>() {
+    public final static Creator<SearchModel> CREATOR = new Creator<SearchModel>() {
 
 
         @SuppressWarnings({
             "unchecked"
         })
-        public UserSearch createFromParcel(Parcel in) {
-            return new UserSearch(in);
+        public SearchModel createFromParcel(Parcel in) {
+            return new SearchModel(in);
         }
 
-        public UserSearch[] newArray(int size) {
-            return (new UserSearch[size]);
+        public SearchModel[] newArray(int size) {
+            return (new SearchModel[size]);
         }
 
     }
     ;
     private final static long serialVersionUID = -5204867283311993926L;
 
-    protected UserSearch(Parcel in) {
+    protected SearchModel(Parcel in) {
         this.totalCount = ((Integer) in.readValue((Integer.class.getClassLoader())));
         this.incompleteResults = ((Boolean) in.readValue((Boolean.class.getClassLoader())));
         in.readList(this.items, (Item.class.getClassLoader()));
@@ -48,7 +48,7 @@ public class UserSearch implements Serializable, Parcelable
      * No args constructor for use in serialization
      * 
      */
-    public UserSearch() {
+    public SearchModel() {
     }
 
     /**
@@ -57,7 +57,7 @@ public class UserSearch implements Serializable, Parcelable
      * @param totalCount
      * @param items
      */
-    public UserSearch(Integer totalCount, Boolean incompleteResults, List<Item> items) {
+    public SearchModel(Integer totalCount, Boolean incompleteResults, List<Item> items) {
         super();
         this.totalCount = totalCount;
         this.incompleteResults = incompleteResults;

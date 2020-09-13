@@ -1,3 +1,14 @@
 <resources>
     <string name="app_name">Submission2BFAA</string>
+    <string name="search">Search</string>
+    <string name="language">Language</string>
+    <string name="search_hint">Masukkan kata</string>
+    <string name="username">Username</string>
+    <string name="url">Url</string>
+    <string name="name">name</string>
+    <string name="biografi">Biografi</string>
+    <string name="company">Company</string>
+    <string name="location">location</string>
+    <string name="tab_following">Following</string>
+    <string name="tab_followers">Followers</string>
 </resources>

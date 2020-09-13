@@ -1,6 +1,8 @@
 package id.sam.submission2bfaa.adapter;
 
 import android.content.Context;
+import android.content.Intent;
+import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -11,14 +13,20 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import com.squareup.picasso.Picasso;
 
+import org.parceler.Parcels;
+
 import java.util.ArrayList;
 import java.util.List;
 
 import de.hdodenhof.circleimageview.CircleImageView;
+import id.sam.submission2bfaa.DetailActivity;
 import id.sam.submission2bfaa.R;
 import id.sam.submission2bfaa.model.search.Item;
 
 public class UserAdapter extends RecyclerView.Adapter<UserAdapter.ViewHolder> {
+
+    public static final String DATA_SEARCH = "dataSearch";
+    public static final String DATA_EXTRA = "dataExtra";
 
     private Context context;
     private List<Item> data = new ArrayList<>();
@@ -36,10 +44,20 @@ public class UserAdapter extends RecyclerView.Adapter<UserAdapter.ViewHolder> {
     }
 
     @Override
-    public void onBindViewHolder(@NonNull ViewHolder holder, int position) {
+    public void onBindViewHolder(@NonNull ViewHolder holder, final int position) {
         holder.txtUsername.setText(data.get(position).getLogin());
         holder.txtUrl.setText(data.get(position).getHtmlUrl());
         Picasso.get().load(data.get(position).getAvatarUrl()).resize(100,100).into(holder.imgAvatar);
+        holder.itemView.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent intent = new Intent(context, DetailActivity.class);
+                Bundle bundle = new Bundle();
+                bundle.putParcelable(DATA_SEARCH, Parcels.wrap(data.get(position)));
+                intent.putExtra(DATA_EXTRA, bundle);
+                context.startActivity(intent);
+            }
+        });
     }
 
     @Override
