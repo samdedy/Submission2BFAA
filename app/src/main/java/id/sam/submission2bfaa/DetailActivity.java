@@ -1,25 +1,26 @@
 package id.sam.submission2bfaa;
 
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.viewpager.widget.ViewPager;
 
 import android.app.ProgressDialog;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.ImageView;
-import android.widget.ProgressBar;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.google.android.material.tabs.TabLayout;
 import com.squareup.picasso.Picasso;
 
 import org.jetbrains.annotations.NotNull;
 import org.parceler.Parcels;
 
 import de.hdodenhof.circleimageview.CircleImageView;
+import id.sam.submission2bfaa.adapter.PageAdapter;
 import id.sam.submission2bfaa.adapter.UserAdapter;
 import id.sam.submission2bfaa.model.DetailModel;
 import id.sam.submission2bfaa.model.search.Item;
-import id.sam.submission2bfaa.model.search.SearchModel;
 import id.sam.submission2bfaa.service.ApiClient;
 import retrofit2.Call;
 import retrofit2.Callback;
@@ -66,6 +67,15 @@ public class DetailActivity extends AppCompatActivity {
         txtUrl.setText(dataSearch.getHtmlUrl());
 
         getDetailUser();
+
+        //TabLayout dan ViewPager
+        PageAdapter pageAdapter = new PageAdapter(this, getSupportFragmentManager());
+        ViewPager viewPager = findViewById(R.id.viewPager);
+        viewPager.setAdapter(pageAdapter);
+        TabLayout tabLayout = findViewById(R.id.tabLayout);
+        tabLayout.setupWithViewPager(viewPager);
+
+        getSupportActionBar().setElevation(0);
     }
 
     public void getDetailUser(){
